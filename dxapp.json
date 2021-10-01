@@ -1,0 +1,46 @@
+ {
+   "name": "sambamba_merge_applet",
+  "title": "Sambamba Mappings Merger",
+  "summary": "Uses Sambamba to merge multiple sorted BAM files into a single BAM file",
+  "version": "0.8.1",
+  "inputSpec":
+  [
+    {
+      "name": "sorted_bams",
+      "label": "Sorted mappings",
+      "help": "A set of coordinate-sorted BAM files to be merged.",
+      "class": "array:file",
+      "patterns": ["*.bam"]
+    },
+
+    {
+      "name": "advanced_options",
+      "label": "Advanced command line options",
+      "help": "Advanced command line options that will be supplied directly to the Sambamba merge execution.",
+      "class": "string",
+      "optional": true
+    }
+  ],
+  "outputSpec": [
+    {
+       "name": "merged_bam",
+      "label": "Merged sorted mappings",
+      "help": "A BAM file with the merged mappings.",
+      "class": "file",
+       "patterns": ["*.bam"]
+    }
+  ],
+  "runSpec": {
+    "interpreter": "bash" ,
+	"release": "16.04",
+	"distribution": "Ubuntu",
+    "file": "src/script.sh",
+    "systemRequirements": {
+      "*": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+  "execDepends": []
+  },
+  "openSource": true
+}
